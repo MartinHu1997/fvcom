@@ -1,0 +1,55 @@
+!  Virtual_Dyke_Mesh.f90 
+!
+!  FUNCTIONS:
+!  Virtual_Dyke_Mesh      - Entry point of console application.
+!
+
+!****************************************************************************
+!
+!  PROGRAM: Virtual_Dyke_Mesh
+!
+!  PURPOSE:  Virtual dyke mesh generation based on the original mesh without dyke.
+!
+!****************************************************************************
+
+Program Virtual_Dyke_Mesh
+USE ALL_VARS
+USE MOD_THINDAM
+USE MOD_SUBS
+Implicit None
+
+! Variables
+
+
+! Body of Virtual_Dyke_Mesh
+CASENAME='yangze'
+FNAME1='Y:\DATA\Mesh_Saltwater\saltwater_250m_2011.2dm'
+FNAME2='yangze_dam.2dm'
+NGL= 106117
+MGL= 55506
+
+!CASENAME='tst'
+!FNAME1='new_dyke3.2dm'
+!FNAME2='tst_dyke3.2dm'
+!NGL= 9250
+!MGL= 4688
+
+!CASENAME='cycle'
+!FNAME1='E:\for-pro\Virtual_Dyke_Mesh\cycle_dyke\cycle_dyke.2dm'
+!FNAME2='E:\for-pro\Virtual_Dyke_Mesh\cycle_dyke\tst_cycle.2dm'
+!NGL= 6825
+!MGL= 3445
+
+
+ISSpherical = .FALSE.
+
+CALL READ_MESH
+CALL TRIANGLE_GRID_EDGE
+CALL READ_NODESTRING
+CALL READ_THINDAM
+CALL INITIALIZE_THINDAM
+CALL DYKE_MESH_GENERATE
+
+
+End Program Virtual_Dyke_Mesh
+
